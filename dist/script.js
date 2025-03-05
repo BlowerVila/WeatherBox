@@ -7,19 +7,19 @@ var weekWeather = [
   },
   {
     day: "TUE",
-    tempC: 27,
+    tempC: 24,
     weather: "thunder",
     isChecked: false
   },
   {
     day: "WED",
-    tempC: 27,
+    tempC: 30,
     weather: "rain",
     isChecked: false
   },
   {
     day: "THU",
-    tempC: 27,
+    tempC: 28,
     weather: "cloud",
     isChecked: false
   },
@@ -31,13 +31,13 @@ var weekWeather = [
   },
   {
     day: "SAT",
-    tempC: 27,
+    tempC: 26,
     weather: "rain",
     isChecked: false
   },
   {
     day: "sun",
-    tempC: 27,
+    tempC: 28,
     weather: "cloud",
     isChecked: false
   }
