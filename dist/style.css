@@ -1,0 +1,390 @@
+@charset "UTF-8";
+* {
+  position: relative;
+  font-family: "inter", "微軟正黑體";
+  transition: 0.8s;
+}
+
+html, body {
+  background-color: #232525;
+  color: #999;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+}
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body .outer {
+  filter: blur(8px);
+}
+
+.tempC:after {
+  content: "°C";
+  margin-left: 20px;
+}
+
+.tempF:after {
+  content: "°F";
+  margin-left: 4px;
+}
+
+h3, h5 {
+  margin: 0;
+}
+
+.imgBG {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url("https://images.pexels.com/photos/3125171/pexels-photo-3125171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: 100%;
+  background-position: 10% 32%;
+  background-repeat: no-repeat;
+  filter: blur(6px);
+}
+.imgBG:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background-color: rgba(34, 34, 34, 0.4);
+}
+
+.right #weaks .weak.checked {
+  background-color: #198B8F;
+  border-bottom: 1px solid rgba(181, 181, 181, 0.5);
+}
+.right #weaks .weak.checked .day {
+  color: white;
+}
+
+.main_weather .w {
+  animation: big_fly 4.5s infinite ease-in-out;
+}
+
+.li_state span {
+  animation: li_fly 4s infinite ease-in-out;
+}
+
+.box {
+  display: flex;
+  box-shadow: -20px 20px 20px rgba(48, 82, 103, 0.3);
+}
+.box .left {
+  padding: 20px 14px;
+  border-radius: 4px;
+  color: white;
+  overflow: hidden;
+  z-index: 2;
+  animation: l_in ease-out 1.2s;
+}
+.box .left .imgBG {
+  z-index: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+  background-image: url("https://images.pexels.com/photos/3125171/pexels-photo-3125171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2");
+  background-size: 400%;
+  background-position: 20% 32%;
+  background-repeat: no-repeat;
+  filter: blur(2px);
+}
+.box .left:after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 237, 237, 0.2), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75));
+  z-index: 0;
+}
+.box .left .top, .box .left .main_weather, .box .left .today, .box .left .info {
+  z-index: 2;
+}
+.box .left .temps, .box .left .today, .box .left .info {
+  display: flex;
+  padding: 6px 0;
+}
+.box .left .today, .box .left .info {
+  justify-content: space-between;
+}
+.box .left .local {
+  display: flex;
+  align-items: center;
+}
+.box .left .local span {
+  font-size: 20px;
+}
+.box .left .local .area {
+  font-size: 24px;
+  font-weight: 300;
+  line-height: 1.6rem;
+}
+.box .left .temps {
+  gap: 8px;
+}
+.box .left .temps .tempC {
+  font-size: 54px;
+  font-weight: 350;
+  letter-spacing: 0.2rem;
+  line-height: 4rem;
+  padding: 4px 12px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+.box .left .temps .other {
+  flex-direction: column;
+  display: flex;
+}
+.box .left .temps .other .tempF {
+  font-size: 12px;
+  display: inline-block;
+  color: #B5B5B5;
+}
+.box .left .temps .other .state {
+  font-size: 24px;
+  font-weight: 300;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.8);
+}
+.box .left .main_weather {
+  width: 100%;
+  height: 200px;
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box .left .main_weather .w {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box .left .main_weather .w .circle {
+  width: 120px;
+  height: 120px;
+  position: absolute;
+  border-radius: 200%;
+  background-color: #E2E2E2;
+  margin-bottom: 20px;
+  box-shadow: 0 0 35px rgba(222, 207, 198, 0.25), 0 0 64px rgba(211, 228, 228, 0.25), 0 0 10px inset white, 0 0 14px inset rgba(0, 0, 0, 0.5), 0 0 5px white;
+}
+.box .left .main_weather .w .moonHoles {
+  width: 40px;
+  height: 40px;
+  background-color: rgba(181, 181, 181, 0.5);
+  z-index: 2;
+  transform: translate(-15px, -30px);
+  box-shadow: 0 -5px 8px inset rgba(181, 181, 181, 0.8), 0 0 10px white;
+}
+.box .left .main_weather .w .moonHoles:before, .box .left .main_weather .w .moonHoles:after {
+  content: "";
+  width: 20px;
+  height: 20px;
+  display: block;
+  position: absolute;
+  background-color: rgba(181, 181, 181, 0.5);
+  transform: translate(20px, 80px);
+  border-radius: 200%;
+  box-shadow: 0 5px 8px inset rgba(181, 181, 181, 0.8), 0 0 10px white;
+}
+.box .left .main_weather .w .moonHoles:after {
+  width: 30px;
+  height: 30px;
+  transform: translate(50px, 50px);
+}
+.box .left .today {
+  font-size: 18px;
+}
+.box .left .info {
+  color: rgba(255, 255, 255, 0.8);
+}
+.box .left .info .content {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+.box .left .info span {
+  font-size: 16px;
+}
+.box .left .info h5 {
+  display: inline-block;
+  font-weight: normal;
+  padding-left: 2px;
+}
+.box .right {
+  z-index: 1;
+  border-bottom-right-radius: 4px;
+  border-top-right-radius: 4px;
+  animation: r_in ease-out 1.2s;
+}
+.box .right:before {
+  content: "";
+  position: absolute;
+  width: 10px;
+  height: 100%;
+  background-color: rgba(226, 226, 226, 0.32);
+  left: -10px;
+}
+.box .right:after {
+  content: "";
+  left: -16px;
+  top: 0;
+  position: absolute;
+  width: 112%;
+  height: 100%;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(0, 0, 0, 0), rgba(119, 121, 123, 0.25));
+  pointer-events: none;
+}
+.box .right .title, .box .right .weak {
+  background-color: rgba(226, 226, 226, 0.25);
+  color: white;
+  border-bottom: 1px solid #B5B5B5;
+}
+.box .right .weak:last-child {
+  border: none;
+}
+.box .right .title {
+  text-align: center;
+  font-size: 10px;
+  padding: 3px 0;
+  color: #B5B5B5;
+}
+.box .right .weak {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 8px 13px;
+  cursor: pointer;
+  transition: 0.5s;
+}
+.box .right .weak:hover {
+  background-color: rgba(226, 226, 226, 0.5);
+}
+.box .right .weak:hover .day {
+  color: white;
+}
+.box .right .li_state {
+  width: 36px;
+  height: 36px;
+  position: relative;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(61, 61, 61, 0.5);
+}
+.box .right .li_info {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  justify-content: space-between;
+}
+.box .right .li_info .day {
+  font-size: 10px;
+  color: #B5B5B5;
+}
+.box .right .li_info .tempC {
+  font-size: 18px;
+  font-weight: 300;
+  letter-spacing: 0.02rem;
+}
+.box .right .li_info .tempC:after {
+  margin-left: 8px;
+}
+
+@keyframes l_in {
+  0% {
+    transform: translateX(100px);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes r_in {
+  0% {
+    transform: translateX(-70px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+@keyframes big_fly {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(3%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes li_fly {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(8%);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+@keyframes l_fly_in {
+  0% {
+    transform: translateX(-30px);
+    opacity: 0.2;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+.main_cloud {
+  width: 80px;
+  height: 40px;
+  border-radius: 40px;
+  position: absolute;
+  left: 40px;
+  bottom: 35px;
+  z-index: 3;
+  background-color: white;
+  box-shadow: 0 -10px 10px inset #E2E2E2, 10px 5px 8px inset #E2E2E2, 0 0 4px inset white;
+}
+.main_cloud:before, .main_cloud:after {
+  content: "";
+  display: block;
+  position: absolute;
+  border-radius: 200%;
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  transform: translate(14px, -20px);
+  z-index: 2;
+  box-shadow: 0 -10px 5px rgba(0, 0, 0, 0.15);
+}
+.main_cloud:after {
+  width: 50px;
+  height: 20px;
+  border-radius: 40px;
+  transform: translate(20px, -10px);
+  z-index: 1;
+}

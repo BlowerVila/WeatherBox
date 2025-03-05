@@ -1,0 +1,376 @@
+$white_text: white
+$white_secText: #B5B5B5
+$rBorder: #B5B5B5
+$main_color: #198B8F
+$rBG: #E2E2E2
+
+$boxBorder: 4px
+$bgUrl: "https://images.pexels.com/photos/3125171/pexels-photo-3125171.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+
+*
+  // border: 1px solid
+  position: relative
+  font-family: "inter","微軟正黑體"
+  transition: 0.8s
+
+html,body
+  background-color: #232525
+  color: #999
+  margin: 0
+  width: 100vw
+  height: 100vh
+body
+  display: flex
+  align-items: center
+  justify-content: center
+  
+  .outer
+    filter: blur(8px)
+  
+  
+// ---重複使用---
+.tempC
+  &:after
+    content: "°C"
+    margin-left: 20px
+.tempF
+  &:after
+    content: "°F"
+    margin-left: 4px
+  
+h3,h5
+    margin: 0
+  
+.imgBG
+    z-index: 0
+    position: absolute
+    width: 100%
+    height: 100%
+    left: 0
+    top: 0
+
+    background-image: url($bgUrl)
+    background-size: 100%
+    background-position: 10% 32%
+    background-repeat: no-repeat
+    filter: blur(6px)
+    &:after
+      content: ""
+      width: 100%
+      height: 100%
+      position: absolute
+      background-color: rgba(#222,0.4)
+  
+.right #weaks .weak.checked
+  background-color: $main_color
+  border-bottom: 1px solid rgba($rBorder,0.5)
+  .day
+    color: $white_text
+  
+.main_weather .w
+  animation: big_fly 4.5s infinite ease-in-out
+.li_state span
+  animation: li_fly 4s infinite ease-in-out
+  
+// ---main---
+  
+.box
+  display: flex
+  box-shadow: -20px 20px 20px rgba(#305267,0.3)
+  
+  .left
+    padding: 20px 14px
+    border-radius: $boxBorder
+    color: $white_text
+    overflow: hidden
+    
+    z-index: 2
+    animation: l_in ease-out 1.2s
+    
+    .imgBG
+      z-index: 0
+      position: absolute
+      width: 100%
+      height: 100%
+      left: 0
+      top: 0
+      
+      background-image: url($bgUrl)
+      background-size: 400%
+      background-position: 20% 32%
+      background-repeat: no-repeat
+      filter: blur(2px)
+      
+    &:after
+      content: ""
+      position: absolute
+      left: 0
+      top: 0
+      width: 100%
+      height: 100%
+      background: linear-gradient(to bottom,rgba(#FFEDED,0.2),rgba(black,0),rgba(black,0.75))
+      z-index: 0
+
+      
+    
+    .top,.main_weather,.today,.info
+      z-index: 2
+    .temps,.today,.info
+      display: flex
+      padding: 6px 0
+      
+    .today,.info
+      justify-content: space-between
+    
+    .local
+      display: flex
+      align-items: center
+      span
+        font-size: 20px
+      .area
+        font-size: 24px
+        font-weight: 300
+        line-height: 1.6rem
+        
+      
+    .temps
+      gap: 8px
+      
+      .tempC
+        font-size: 54px
+        font-weight: 350
+        letter-spacing: 0.2rem
+        line-height: 4rem
+        padding: 4px 12px
+        background-color: rgba($white_text,0.3)
+      .other
+        flex-direction: column
+        display: flex
+        .tempF
+          font-size: 12px
+          display: inline-block
+          color: $white_secText
+        .state
+          font-size: 24px
+          font-weight: 300
+          display: inline-block
+          color: rgba($white_text,0.8)
+   
+    .main_weather
+      width: 100%
+      height: 200px
+      position: relative
+      box-sizing: border-box
+      
+      display: flex
+      align-items: center
+      justify-content: center
+      
+      .w
+        position: absolute
+        width: 100%
+        height: 100%
+        box-sizing: border-box
+        
+        display: flex
+        align-items: center
+        justify-content: center
+        .circle
+          width: 120px
+          height: 120px
+          position: absolute
+          border-radius: 200%
+          background-color: $rBG
+          margin-bottom: 20px
+          box-shadow: 0 0 35px rgba(#DECFC6,0.25) , 0 0 64px rgba(#D3E4E4,0.25),0 0 10px inset $white_text,0 0 14px inset rgba(black,0.5),0 0 5px $white_text
+        
+        .moonHoles
+          width: 40px
+          height: 40px
+          background-color: rgba($white_secText,0.5)
+          z-index: 2
+          transform: translate(-15px,-30px) 
+          box-shadow: 0 -5px 8px inset rgba($white_secText,0.8),0 0 10px $white_text
+          &:before,&:after
+            content: ""
+            width: 20px
+            height: 20px
+            display: block
+            position: absolute
+            background-color: rgba($white_secText,0.5)
+            transform: translate(20px,80px) 
+            border-radius: 200%
+            box-shadow: 0 5px 8px inset rgba($white_secText,0.8),0 0 10px $white_text
+          &:after
+            width: 30px
+            height: 30px
+            transform: translate(50px,50px) 
+
+          
+            
+
+        
+        
+    .today
+      font-size: 18px
+    .info
+      color: rgba($white_text,0.8)
+      .content
+        display: flex
+        align-items: center
+        gap: 2px
+      span
+        font-size: 16px
+      h5
+        display: inline-block
+        font-weight: normal
+        padding-left: 2px
+      
+  .right
+    z-index: 1
+    border-bottom-right-radius: $boxBorder
+    border-top-right-radius: $boxBorder
+    
+    animation: r_in ease-out 1.2s
+    &:before
+      content: ""
+      position: absolute
+      width: 10px
+      height: 100%
+      background-color: rgba($rBG,0.32)
+      left: -10px
+    &:after
+      content: ""
+      left: -16px
+      top: 0
+      position: absolute
+      width: 112%
+      height: 100%
+      background: linear-gradient(to right,rgba(black,0.4),rgba(black,0),rgba(black,0),rgba(black,0),rgba(#77797B,0.25))
+      pointer-events: none
+    
+    .title,.weak
+      background-color: rgba($rBG,0.25)
+      color: $white_text
+      border-bottom: 1px solid $rBorder
+    .weak:last-child
+      border: none
+    
+    .title
+      text-align: center
+      font-size: 10px
+      padding: 3px 0
+      color: $white_secText
+      
+    .weak
+      display: flex
+      align-items: center
+      justify-content: center
+      gap: 10px
+      padding: 8px 13px
+      cursor: pointer
+      
+      transition: 0.5s
+      
+      &:hover
+        background-color: rgba($rBG,0.5)
+        .day
+          color: $white_text
+
+    
+    .li_state
+      width: 36px
+      height: 36px
+      position: relative
+      border-radius: 50%
+      display: flex
+      align-items: center
+      justify-content: center
+      
+      background-color: rgba(#3D3D3D,0.5)
+    
+    .li_info
+      display: flex
+      flex-direction: column
+      gap: 2px
+      justify-content: space-between
+      .day
+        font-size: 10px
+        color: $white_secText
+      .tempC
+        font-size: 18px
+        font-weight: 300
+        letter-spacing: 0.02rem
+        &:after
+          margin-left: 8px
+      
+      
+      
+// animation區 
+
+@keyframes l_in
+  0%
+    transform: translateX(100px)
+  100%
+    transform: translateX(0)
+@keyframes r_in 
+  0%
+    transform: translateX(-70px)
+    opacity: 0
+  100%
+    transform: translateX(0)
+    opacity: 1
+  
+@keyframes big_fly
+  0%
+    transform: translateY(0)
+  50%
+    transform: translateY(3%)
+  100%
+    transform: translateY(0)
+@keyframes li_fly
+  0%
+    transform: translateY(0)
+  50%
+    transform: translateY(8%)
+  100%
+    transform: translateY(0)
+  
+@keyframes l_fly_in
+  0%
+    transform: translateX(-30px)
+    opacity: 0.2
+  100%
+    transform: translateX(0)
+    opacity: 1
+  
+// main天氣變化區
+
+.main_cloud
+  width: 80px
+  height: 40px
+  border-radius: 40px
+  position: absolute
+  left: 40px
+  bottom: 35px
+  z-index: 3
+  background-color: $white_text
+  box-shadow: 0 -10px 10px inset $rBG,10px 5px 8px inset $rBG, 0 0 4px inset $white_text
+  &:before,&:after
+    content: ""
+    display: block
+    position: absolute
+    border-radius: 200%
+    width: 40px
+    height: 40px
+    background-color: $white_text
+    transform: translate(14px,-20px)
+    z-index: 2
+    box-shadow: 0 -10px 5px rgba(black,0.15) 
+  &:after
+    width: 50px
+    height: 20px
+    border-radius: 40px
+    transform: translate(20px,-10px)
+    z-index: 1
+  
